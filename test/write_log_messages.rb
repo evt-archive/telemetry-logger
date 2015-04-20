@@ -1,15 +1,12 @@
 require_relative 'test_init'
 
-module Logger
+module WriteLogMessages
   class Example
     attr_accessor :logger
 
-    Logger.register self
-
     def self.build
       instance = new
-      instance.logger = Logger.get self
-      # Logger.configure instance
+      Telemetry::Logger.configure instance
       instance
     end
 
@@ -51,7 +48,7 @@ module Logger
   end
 end
 
-e = Logger::Example.build
+e = WriteLogMessages::Example.build
 e.trace
 e.data
 e.debug
@@ -61,5 +58,3 @@ e.fail
 e.warn
 e.error
 e.fatal
-
-Logger.debug "This is an ad hoc debug"
