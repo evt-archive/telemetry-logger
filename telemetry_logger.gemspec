@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
-  s.name = 'logger'
+  s.name = 'telemetry_logger'
   s.summary = "Logging"
   s.version = '0.0.0'
   s.authors = ['']
