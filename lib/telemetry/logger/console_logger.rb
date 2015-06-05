@@ -44,7 +44,7 @@ module Telemetry
       def excluded?(message)
         exclude = ENV['LOG_EXCLUDE']
 
-        !!(message =~ /#{exclude}/) if exclude
+        message =~ /#{exclude}/ if exclude
       end
 
       def level=(val)
