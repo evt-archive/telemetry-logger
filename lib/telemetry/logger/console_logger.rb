@@ -38,7 +38,13 @@ module Telemetry
 
       def write(message)
         return if Defaults.activation == 'off'
-        device.puts message
+        device.puts message unless excluded?(message)
+      end
+
+      def excluded?(message)
+        exclude = ENV['LOG_EXCLUDE']
+
+        !!(message =~ /#{exclude}/) if exclude
       end
 
       def level=(val)
