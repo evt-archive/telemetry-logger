@@ -25,13 +25,13 @@ class ExcludeLogMessages
 
   class AlsoExcluded < ExcludeLogMessages
     def message
-      "This should not be written because of the class name"
+      "This should also be excluded because of the class name"
     end
   end
 
   class Included < ExcludeLogMessages
     def message
-      "This should be written"
+      "This should not be excluded"
     end
   end
 end
