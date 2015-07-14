@@ -10,12 +10,12 @@ module WriteLogMessages
       instance
     end
 
-    def trace
-      logger.trace "This is a trace"
-    end
-
     def data
       logger.data "This is a data"
+    end
+
+    def trace
+      logger.trace "This is a trace"
     end
 
     def debug
@@ -49,8 +49,8 @@ module WriteLogMessages
 end
 
 e = WriteLogMessages::Example.build
-e.trace
 e.data
+e.trace
 e.debug
 e.info
 e.pass

@@ -2,15 +2,15 @@ module Telemetry
   module Logger
     module Levels
       def levels
-        [:trace, :data, :debug, :info, :pass, :fail, :warn, :error, :fatal]
-      end
-
-      def trace(message)
-        write_message('trace', message) if write?(0)
+        [:data, :trace, :debug, :info, :pass, :fail, :warn, :error, :fatal]
       end
 
       def data(message)
-        write_message('data', message) if write?(1)
+        write_message('data', message) if write?(0)
+      end
+
+      def trace(message)
+        write_message('trace', message) if write?(1)
       end
 
       def debug(message)

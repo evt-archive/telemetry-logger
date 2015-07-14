@@ -9,12 +9,12 @@ module WriteToNullLogger
       instance
     end
 
-    def trace
-      logger.trace "This trace message should not be written"
-    end
-
     def data
       logger.data "This data message should not be written"
+    end
+
+    def trace
+      logger.trace "This trace message should not be written"
     end
 
     def debug
@@ -48,8 +48,8 @@ module WriteToNullLogger
 end
 
 e = WriteToNullLogger::Example.build
-e.trace
 e.data
+e.trace
 e.debug
 e.info
 e.pass
