@@ -1,4 +1,4 @@
-ENV['LOG_LEVEL'] = 'trace'
+ENV['LOG_LEVEL'] ||= 'data'
 
 puts RUBY_DESCRIPTION
 

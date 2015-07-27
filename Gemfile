@@ -1,6 +1,8 @@
-require './prox_gem'
-
 source 'https://rubygems.org'
+
+gem 'rainbow'
+
+require './prox_gem'
 
 prox_gem 'attribute'
 prox_gem 'subst_attr'

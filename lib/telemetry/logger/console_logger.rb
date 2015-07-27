@@ -41,6 +41,16 @@ module Telemetry
         device.puts message
       end
 
+      def format(message, level)
+        return message if Defaults.color == 'off'
+        Telemetry::Logger::Color.apply(level, message)
+      end
+
+      def format_metadata(text)
+        return text if Defaults.color == 'off'
+        Telemetry::Logger::Color.metadata(text)
+      end
+
       def level=(val)
         index = levels.index(val)
 
@@ -76,6 +86,13 @@ module Telemetry
           return activation if activation
 
           'on'
+        end
+
+        def self.color
+          color = ENV['CONSOLE_COLOR']
+          return color if color
+
+          'off'
         end
       end
     end

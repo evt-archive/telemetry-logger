@@ -42,7 +42,23 @@ module Telemetry
       end
 
       def write_message(level, message)
-        implementer.write "[#{implementer.clock.iso8601}] #{name} #{level.upcase}: #{message}"
+        message = implementer.format(message, level)
+
+        metadata = metadata(level)
+
+        header = implementer.format_metadata(metadata)
+
+        implementer.write "#{header}#{message}"
+      end
+
+      def metadata(level)
+        if Defaults.metadata == 'off'
+          return nil
+        elsif Defaults.metadata == 'minimal'
+          return "#{name.split('::').last}: "
+        else
+         return "[#{implementer.clock.iso8601}] #{name} #{level.upcase}: "
+        end
       end
 
       def write?(level_ordinal)
@@ -51,6 +67,15 @@ module Telemetry
 
       def implementer
         self
+      end
+
+      module Defaults
+        def self.metadata
+          metadata = ENV['LOG_METADATA']
+          return metadata if metadata
+
+          'on'
+        end
       end
     end
   end
