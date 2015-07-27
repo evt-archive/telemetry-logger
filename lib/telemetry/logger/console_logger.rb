@@ -89,7 +89,17 @@ module Telemetry
         end
 
         def self.color
-          color = ENV['CONSOLE_COLOR']
+          color = ENV['LOG_COLOR']
+
+          # CONSOLE_COLOR is obsolete. It is here for backwards compatibility
+          if color.nil?
+            color = ENV['CONSOLE_COLOR']
+
+            unless color.nil?
+              puts '*** WARNING: The CONSOLE_COLOR environment variable is obsolete. Use LOG_COLOR instead. Support for CONSOLE_COLOR will be discontinued.'
+            end
+          end
+
           return color if color
 
           'off'
