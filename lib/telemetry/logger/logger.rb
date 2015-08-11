@@ -2,12 +2,13 @@ module Telemetry
   module Logger
     extend self
 
-    def get(subject, implementation=nil)
+    def build(subject, implementation=nil)
       implementation ||= Defaults.implementation
       logger = implementation.build(subject)
       logger
     end
-    alias :register :get
+    alias :get :build
+    alias :register :build
 
     def configure(receiver, implementation=nil)
       logger = get(receiver, implementation)
