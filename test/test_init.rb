@@ -1,4 +1,4 @@
-ENV['LOG_LEVEL'] ||= 'data'
+ENV['LOG_LEVEL'] ||= 'obsolete'
 
 puts RUBY_DESCRIPTION
 

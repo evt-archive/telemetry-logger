@@ -7,8 +7,20 @@ module Telemetry
       logger = implementation.build(subject)
       logger
     end
-    alias :get :build
-    alias :register :build
+
+    def get(subject, implementation=nil)
+      logger = Logger.build self
+      logger.obsolete "The \"get\" method is obsolete"
+
+      build(subject, implementation=nil)
+    end
+
+    def register(subject, implementation=nil)
+      logger = Logger.build self
+      logger.obsolete "The \"register\" method is obsolete"
+
+      build(subject, implementation=nil)
+    end
 
     def configure(receiver, implementation=nil)
       logger = get(receiver, implementation)

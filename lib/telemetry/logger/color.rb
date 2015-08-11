@@ -18,7 +18,7 @@ module Telemetry
       end
 
       def obsolete(message)
-        Rainbow(message).black.bg(:white)
+        Rainbow(message).bright.white
       end
 
       def data(message)
