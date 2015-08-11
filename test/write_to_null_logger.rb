@@ -9,6 +9,10 @@ module WriteToNullLogger
       instance
     end
 
+    def obsolete
+      logger.obsolete "This obsolete message should not be written"
+    end
+
     def data
       logger.data "This data message should not be written"
     end
@@ -48,6 +52,7 @@ module WriteToNullLogger
 end
 
 e = WriteToNullLogger::Example.build
+e.obsolete
 e.data
 e.trace
 e.debug

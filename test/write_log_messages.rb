@@ -10,6 +10,10 @@ module WriteLogMessages
       instance
     end
 
+    def obsolete
+      logger.obsolete "This is an obsolete"
+    end
+
     def data
       logger.data "This is a data"
     end
@@ -49,6 +53,7 @@ module WriteLogMessages
 end
 
 e = WriteLogMessages::Example.build
+e.obsolete
 e.data
 e.trace
 e.debug

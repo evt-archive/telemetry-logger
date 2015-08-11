@@ -17,6 +17,10 @@ module Telemetry
         Rainbow(text).white
       end
 
+      def obsolete(message)
+        Rainbow(message).black.bg(:white)
+      end
+
       def data(message)
         Rainbow(message).cyan
       end
