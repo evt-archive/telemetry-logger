@@ -10,6 +10,7 @@ module Telemetry
       end
 
       def data(message)
+        message = message.to_s
         message.each_line do |line|
           line = line.chomp("\n") unless line.end_with?("\r\n") || line == "\n"
           line = line.gsub("\r", "\\r")
