@@ -10,7 +10,12 @@ module Telemetry
       end
 
       def data(message)
-        write_message('data', message) if write?(1)
+        message.each_line do |line|
+          line = line.chomp("\n") unless line.end_with?("\r\n") || line == "\n"
+          line = line.gsub("\r", "\\r")
+          line = line.gsub("\n", "\\n")
+          write_message('data', line) if write?(1)
+        end
       end
 
       def trace(message)

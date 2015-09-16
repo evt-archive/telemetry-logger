@@ -18,6 +18,10 @@ module WriteLogMessages
       logger.data "This is a data"
     end
 
+    def multiline_data
+      logger.data "This\n\r\nis\na\r\nmultiline\n\ndata\n\nyeah\n\rok"
+    end
+
     def trace
       logger.trace "This is a trace"
     end
@@ -55,6 +59,7 @@ end
 e = WriteLogMessages::Example.build
 e.obsolete
 e.data
+e.multiline_data
 e.trace
 e.debug
 e.info
