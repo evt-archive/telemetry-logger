@@ -10,13 +10,7 @@ module Telemetry
       end
 
       def data(message)
-        message = message.to_s
-        message.each_line do |line|
-          line = line.chomp("\n") unless line.end_with?("\r\n") || line == "\n"
-          line = line.gsub("\r", "\\r")
-          line = line.gsub("\n", "\\n")
-          write_message('data', line) if write?(1)
-        end
+        write_message('data', message) if write?(1)
       end
 
       def trace(message)
@@ -52,13 +46,19 @@ module Telemetry
       end
 
       def write_message(level, message)
-        message = implementer.format(message, level)
+        message = message.to_s
 
-        metadata = metadata(level)
+        message.each_line do |line|
+          line = line.chomp("\n") unless line.end_with?("\r\n") || line == "\n"
+          line = line.gsub("\r", "\\r")
+          line = line.gsub("\n", "\\n")
 
-        header = implementer.format_metadata(metadata)
+          message = implementer.format(line, level)
+          metadata = metadata(level)
+          header = implementer.format_metadata(metadata)
 
-        implementer.write "#{header}#{message}"
+          implementer.write "#{header}#{message}"
+        end
       end
 
       def metadata(level)
