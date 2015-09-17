@@ -1,4 +1,4 @@
-require 'rainbow'
+require 'rainbow'; Rainbow.enabled = true
 
 require 'pathname'
 require 'clock'

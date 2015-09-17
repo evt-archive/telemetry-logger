@@ -102,7 +102,11 @@ module Telemetry
 
           return color if color
 
-          'off'
+          if device.tty?
+            'on'
+          else
+            'off'
+          end
         end
       end
     end
