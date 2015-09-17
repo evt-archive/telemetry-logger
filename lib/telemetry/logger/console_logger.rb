@@ -78,6 +78,7 @@ module Telemetry
           else
             device = STDERR
           end
+          device.sync = true
           device
         end
 
