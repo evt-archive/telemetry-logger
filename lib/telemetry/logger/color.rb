@@ -14,7 +14,8 @@ module Telemetry
       end
 
       def metadata(text)
-        Rainbow(text).blue
+        # Rainbow(text).blue
+        Rainbow(text).yellow
       end
 
       def obsolete(message)
