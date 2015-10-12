@@ -42,6 +42,10 @@ module Telemetry
         Rainbow(message).black.bg(:red)
       end
 
+      def focus(message)
+        Rainbow(message).bright.white.bg(:blue)
+      end
+
       def warn(message)
         Rainbow(message).red.bg(:white)
       end

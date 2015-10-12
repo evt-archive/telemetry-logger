@@ -42,6 +42,10 @@ module WriteLogMessages
       logger.fail "This is a fail"
     end
 
+    def focus
+      logger.focus "This is a focus"
+    end
+
     def warn
       logger.warn "This is a warn"
     end
@@ -65,6 +69,7 @@ e.debug
 e.info
 e.pass
 e.fail
+e.focus
 e.warn
 e.error
 e.fatal
