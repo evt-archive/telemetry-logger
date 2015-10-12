@@ -37,6 +37,10 @@ module WriteToNullLogger
       logger.fail "This fail message should not be written"
     end
 
+    def focus
+      logger.focus "This focus message should not be written"
+    end
+
     def warn
       logger.warn "This warn message should not be written"
     end
