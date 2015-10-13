@@ -23,10 +23,10 @@ module Telemetry
 
       def write_level(level, message)
         level_ordinal = levels.index(level)
-        write_message(level, message) if write?(level_ordinal)
+        write_message(message, level) if write?(level_ordinal)
       end
 
-      def write_message(level, message)
+      def write_message(message, level)
         message = message.to_s
 
         message.each_line do |line|

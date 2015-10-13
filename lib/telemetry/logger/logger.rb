@@ -38,7 +38,7 @@ module Telemetry
 
       logger = build subject, implementation
 
-      logger.write_message level, message
+      logger.write_message message, level
     end
 
     module Defaults
