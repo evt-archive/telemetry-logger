@@ -11,7 +11,7 @@ module Telemetry
 
       def __logger(subject=nil)
         subject ||= caller[0].split('/').last
-        Telemetry::Logger.build "*** #{subject}"
+        Telemetry::Logger.build subject
       end
     end
   end
