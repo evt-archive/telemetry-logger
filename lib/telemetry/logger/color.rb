@@ -4,17 +4,14 @@ module Telemetry
       extend self
 
       def apply(level, message)
-        level_sym = level.to_sym
-
-        if respond_to? level_sym
-          send level_sym, message
+        if respond_to? level
+          send level, message
         else
           message
         end
       end
 
       def metadata(text)
-        # Rainbow(text).blue
         Rainbow(text).yellow
       end
 

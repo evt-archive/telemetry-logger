@@ -1,66 +1,32 @@
 module Telemetry
   module Logger
     module Levels
-      def levels
+      def self.levels
         [:obsolete, :data, :trace, :debug, :info, :pass, :fail, :focus, :warn, :error, :fatal]
       end
 
-      def obsolete(message)
-        level = __method__
-        write_message('obsolete', message) if write?(0)
+      def levels
+        Levels.levels
       end
 
-      def data(message)
-        level = __method__
-        write_message('data', message) if write?(1)
+      def self.included(cls)
+        levels.each do |level|
+          define_level level, cls
+        end
       end
 
-      def trace(message)
-        level = __method__
-        write_message('trace', message) if write?(2)
+      def self.define_level(level, cls)
+        cls.send :define_method, level do |message|
+          write_level(__method__, message)
+        end
       end
 
-      def debug(message)
-        level = __method__
-        write_message('debug', message) if write?(3)
+      def write_level(level, message)
+        level_ordinal = levels.index(level)
+        write_message(message, level) if write?(level_ordinal)
       end
 
-      def info(message)
-        level = __method__
-        write_message('info', message) if write?(4)
-      end
-
-      def pass(message)
-        level = __method__
-        write_message('pass', message) if write?(5)
-      end
-
-      def fail(message)
-        level = __method__
-        write_message('fail', message) if write?(6)
-      end
-
-      def focus(message)
-        level = __method__
-        write_message(level, message) if write?(7)
-      end
-
-      def warn(message)
-        level = __method__
-        write_message('warn', message) if write?(8)
-      end
-
-      def error(message)
-        level = __method__
-        write_message('error', message) if write?(9)
-      end
-
-      def fatal(message)
-        level = __method__
-        write_message('fatal', message) if write?(10)
-      end
-
-      def write_message(level, message)
+      def write_message(message, level)
         message = message.to_s
 
         message.each_line do |line|
@@ -77,6 +43,7 @@ module Telemetry
       end
 
       def metadata(level)
+        level = String(level)
         if Defaults.metadata == 'off'
           return nil
         elsif Defaults.metadata == 'minimal'
