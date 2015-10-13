@@ -2,7 +2,19 @@ module Telemetry
   module Logger
     module Levels
       def self.levels
-        [:obsolete, :data, :trace, :debug, :info, :pass, :fail, :focus, :warn, :error, :fatal]
+        [
+          :obsolete,
+          :data,
+          :trace,
+          :debug,
+          :info,
+          :pass,
+          :fail,
+          :focus,
+          :warn,
+          :error,
+          :fatal
+        ]
       end
 
       def levels
