@@ -23,7 +23,7 @@ module Telemetry
     end
 
     def configure(receiver, implementation=nil)
-      logger = get(receiver, implementation)
+      logger = build(receiver, implementation)
       receiver.logger = logger
       logger
     end

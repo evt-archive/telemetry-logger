@@ -1,13 +1,18 @@
 module Telemetry
   module Logger
     module Levels
-      def levels
+      def self.levels
         [:obsolete, :data, :trace, :debug, :info, :pass, :fail, :focus, :warn, :error, :fatal]
+      end
+
+      def levels
+        Levels.levels
       end
 
       def obsolete(message)
         level = __method__
-        write_message('obsolete', message) if write?(0)
+        level_ordinal = levels.index(level)
+        write_message(level, message) if write?(level_ordinal)
       end
 
       def data(message)
@@ -77,6 +82,7 @@ module Telemetry
       end
 
       def metadata(level)
+        level = String(level)
         if Defaults.metadata == 'off'
           return nil
         elsif Defaults.metadata == 'minimal'
