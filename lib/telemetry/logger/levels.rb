@@ -9,62 +9,21 @@ module Telemetry
         Levels.levels
       end
 
-      def obsolete(message)
-        write_level(__method__, message)
+      def self.included(cls)
+        levels.each do |level|
+          define_level level, cls
+        end
+      end
+
+      def self.define_level(level, cls)
+        cls.send :define_method, level do |message|
+          write_level(__method__, message)
+        end
       end
 
       def write_level(level, message)
         level_ordinal = levels.index(level)
         write_message(level, message) if write?(level_ordinal)
-      end
-
-      def data(message)
-        write_level(__method__, message)
-      end
-
-      def trace(message)
-        level = __method__
-        write_message('trace', message) if write?(2)
-      end
-
-      def debug(message)
-        level = __method__
-        write_message('debug', message) if write?(3)
-      end
-
-      def info(message)
-        level = __method__
-        write_message('info', message) if write?(4)
-      end
-
-      def pass(message)
-        level = __method__
-        write_message('pass', message) if write?(5)
-      end
-
-      def fail(message)
-        level = __method__
-        write_message('fail', message) if write?(6)
-      end
-
-      def focus(message)
-        level = __method__
-        write_message(level, message) if write?(7)
-      end
-
-      def warn(message)
-        level = __method__
-        write_message('warn', message) if write?(8)
-      end
-
-      def error(message)
-        level = __method__
-        write_message('error', message) if write?(9)
-      end
-
-      def fatal(message)
-        level = __method__
-        write_message('fatal', message) if write?(10)
       end
 
       def write_message(level, message)
