@@ -10,10 +10,6 @@ module Telemetry
       end
 
       def obsolete(message)
-        # level = __method__
-        # level_ordinal = levels.index(level)
-        # write_message(level, message) if write?(level_ordinal)
-
         write_level(__method__, message)
       end
 
@@ -23,8 +19,7 @@ module Telemetry
       end
 
       def data(message)
-        level = __method__
-        write_message('data', message) if write?(1)
+        write_level(__method__, message)
       end
 
       def trace(message)
