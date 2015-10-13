@@ -10,7 +10,14 @@ module Telemetry
       end
 
       def obsolete(message)
-        level = __method__
+        # level = __method__
+        # level_ordinal = levels.index(level)
+        # write_message(level, message) if write?(level_ordinal)
+
+        write_level(__method__, message)
+      end
+
+      def write_level(level, message)
         level_ordinal = levels.index(level)
         write_message(level, message) if write?(level_ordinal)
       end
