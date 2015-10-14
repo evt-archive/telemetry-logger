@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
-  s.name = 'telemetry_logger'
-  s.summary = "Logging"
+  s.name = 'telemetry-logger'
+  s.summary = 'Logging'
   s.version = '0.0.0'
   s.authors = ['']
   s.require_paths = ['lib']
@@ -9,5 +9,8 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = '>= 1.9.2'
 
-  s.add_runtime_dependency "rainbow"
+  s.add_runtime_dependency 'rainbow'
+
+  s.add_runtime_dependency 'clock'
+  s.add_runtime_dependency 'dependency'
 end
