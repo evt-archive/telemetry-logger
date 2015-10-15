@@ -1,51 +1,44 @@
 module Telemetry
   module Logger
     module Levels
+      def self.levels
+        [
+          :obsolete,
+          :data,
+          :trace,
+          :debug,
+          :info,
+          :pass,
+          :fail,
+          :focus,
+          :warn,
+          :error,
+          :fatal
+        ]
+      end
+
       def levels
-        [:obsolete, :data, :trace, :debug, :info, :pass, :fail, :warn, :error, :fatal]
+        Levels.levels
       end
 
-      def obsolete(message)
-        write_message('obsolete', message) if write?(0)
+      def self.included(cls)
+        levels.each do |level|
+          define_level level, cls
+        end
       end
 
-      def data(message)
-        write_message('data', message) if write?(1)
+      def self.define_level(level, cls)
+        cls.send :define_method, level do |message|
+          write_level(__method__, message)
+        end
       end
 
-      def trace(message)
-        write_message('trace', message) if write?(2)
+      def write_level(level, message)
+        level_ordinal = levels.index(level)
+        write_message(message, level) if write?(level_ordinal)
       end
 
-      def debug(message)
-        write_message('debug', message) if write?(3)
-      end
-
-      def info(message)
-        write_message('info', message) if write?(4)
-      end
-
-      def pass(message)
-        write_message('pass', message) if write?(5)
-      end
-
-      def fail(message)
-        write_message('fail', message) if write?(6)
-      end
-
-      def warn(message)
-        write_message('warn', message) if write?(7)
-      end
-
-      def error(message)
-        write_message('error', message) if write?(8)
-      end
-
-      def fatal(message)
-        write_message('fatal', message) if write?(9)
-      end
-
-      def write_message(level, message)
+      def write_message(message, level)
         message = message.to_s
 
         message.each_line do |line|
@@ -62,6 +55,7 @@ module Telemetry
       end
 
       def metadata(level)
+        level = String(level)
         if Defaults.metadata == 'off'
           return nil
         elsif Defaults.metadata == 'minimal'

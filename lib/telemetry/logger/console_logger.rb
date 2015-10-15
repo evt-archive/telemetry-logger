@@ -51,13 +51,13 @@ module Telemetry
         Telemetry::Logger::Color.metadata(text)
       end
 
-      def level=(val)
-        index = levels.index(val)
+      def level=(level)
+        index = levels.index(level)
 
-        raise "Unknown logger level: #{val}" unless index
+        raise "Unknown logger level: #{level}" unless index
 
         @level_number = index
-        @level = val
+        @level = level
       end
 
       module Defaults
