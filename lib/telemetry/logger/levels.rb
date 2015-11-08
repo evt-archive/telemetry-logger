@@ -69,7 +69,7 @@ module Telemetry
           level = String(level)
 
           if level.start_with?('opt_')
-            level = "#{level.split('_').last}*"
+            level = "(#{level.split('_').last})"
           end
 
           return "[#{implementer.clock.iso8601}] #{name} #{level.upcase}: "

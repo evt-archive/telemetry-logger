@@ -23,6 +23,10 @@ module Telemetry
         Rainbow(message).cyan
       end
 
+      def opt_trace(message)
+        trace(message)
+      end
+
       def trace(message)
         Rainbow(message).white
       end
