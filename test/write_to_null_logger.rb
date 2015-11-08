@@ -17,6 +17,14 @@ module WriteToNullLogger
       logger.data "This data message should not be written"
     end
 
+    def opt_trace
+      logger.opt_trace "This opt_trace message should not be written"
+    end
+
+    def opt_debug
+      logger.opt_debug "This opt_debug message should not be written"
+    end
+
     def trace
       logger.trace "This trace message should not be written"
     end

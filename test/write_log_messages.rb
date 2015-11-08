@@ -22,6 +22,14 @@ module WriteLogMessages
       logger.data "This\n\r\nis\na\r\nmultiline\n\ndata\n\nyeah\n\rok"
     end
 
+    def opt_trace
+      logger.opt_trace "This is an optional trace"
+    end
+
+    def opt_debug
+      logger.opt_debug "This is an optional debug"
+    end
+
     def trace
       logger.trace "This is a trace"
     end
@@ -64,6 +72,8 @@ e = WriteLogMessages::Example.build
 e.obsolete
 e.data
 e.multiline_data
+e.opt_trace
+e.opt_debug
 e.trace
 e.debug
 e.info

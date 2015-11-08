@@ -5,6 +5,8 @@ module Telemetry
         [
           :obsolete,
           :data,
+          :opt_trace,
+          :opt_debug,
           :trace,
           :debug,
           :info,
@@ -33,9 +35,13 @@ module Telemetry
         end
       end
 
+      def ordinal(level)
+        levels.index(level)
+      end
+
       def write_level(level, message)
-        level_ordinal = levels.index(level)
-        write_message(message, level) if write?(level_ordinal)
+        level_ordinal = ordinal(level)
+        write_message(message, level) if included?(level_ordinal) && !omit?(level)
       end
 
       def write_message(message, level)
@@ -55,18 +61,31 @@ module Telemetry
       end
 
       def metadata(level)
-        level = String(level)
         if Defaults.metadata == 'off'
           return nil
         elsif Defaults.metadata == 'minimal'
           return "#{name.split('::').last}: "
         else
-         return "[#{implementer.clock.iso8601}] #{name} #{level.upcase}: "
+          level = String(level)
+
+          if level.start_with?('opt_')
+            level = "(#{level.split('_').last})"
+          end
+
+          return "[#{implementer.clock.iso8601}] #{name} #{level.upcase}: "
         end
       end
 
-      def write?(level_ordinal)
+      def included?(level_ordinal)
         level_ordinal >= level_number
+      end
+
+      def omit?(level)
+        Defaults.optional == 'on' && optional?(level)
+      end
+
+      def optional?(level)
+        level.start_with?('opt_')
       end
 
       def implementer
@@ -79,6 +98,13 @@ module Telemetry
           return metadata if metadata
 
           'on'
+        end
+
+        def self.optional
+          optional = ENV['LOG_OPTIONAL']
+          return optional if optional
+
+          'off'
         end
       end
     end
