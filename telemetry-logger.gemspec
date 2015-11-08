@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'telemetry-logger'
-  s.version = '0.1.2'
+  s.version = '0.1.3'
   s.summary = 'Logging to STDERR with coloring and levels of severity'
   s.description = ' '
 
@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'clock', '~> 0'
   s.add_runtime_dependency 'dependency', '~> 0'
 
-  s.add_runtime_dependency 'rainbow', '~> 0'
+  s.add_runtime_dependency 'rainbow', '~> 1'
 end
