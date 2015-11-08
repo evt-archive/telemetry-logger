@@ -85,7 +85,7 @@ module Telemetry
       end
 
       def optional?(level)
-        level.start_with?('opt_')
+        String(level).start_with?('opt_')
       end
 
       def implementer
