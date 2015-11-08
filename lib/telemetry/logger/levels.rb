@@ -5,10 +5,10 @@ module Telemetry
         [
           :obsolete,
           :data,
-          :opt_trace,
-          :opt_debug,
           :trace,
           :debug,
+          :opt_trace,
+          :opt_debug,
           :info,
           :pass,
           :fail,
@@ -41,7 +41,7 @@ module Telemetry
 
       def write_level(level, message)
         level_ordinal = ordinal(level)
-        write_message(message, level) if included?(level_ordinal) && !omit?(level)
+        write_message(message, level) if sufficient_level?(level_ordinal) && !omit?(level)
       end
 
       def write_message(message, level)
@@ -76,15 +76,15 @@ module Telemetry
         end
       end
 
-      def included?(level_ordinal)
+      def sufficient_level?(level_ordinal)
         level_ordinal >= level_number
       end
 
       def omit?(level)
-        Defaults.optional == 'on' && optional?(level)
+        Defaults.optional == 'off' && optional_level?(level)
       end
 
-      def optional?(level)
+      def optional_level?(level)
         String(level).start_with?('opt_')
       end
 
