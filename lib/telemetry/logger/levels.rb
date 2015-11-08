@@ -7,6 +7,7 @@ module Telemetry
           :data,
           :trace,
           :debug,
+          :opt_data,
           :opt_trace,
           :opt_debug,
           :info,

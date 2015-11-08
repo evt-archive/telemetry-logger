@@ -17,20 +17,24 @@ module WriteToNullLogger
       logger.data "This data message should not be written"
     end
 
-    def opt_trace
-      logger.opt_trace "This opt_trace message should not be written"
-    end
-
-    def opt_debug
-      logger.opt_debug "This opt_debug message should not be written"
-    end
-
     def trace
       logger.trace "This trace message should not be written"
     end
 
     def debug
       logger.debug "This debug message should not be written"
+    end
+
+    def opt_data
+      logger.opt_data "This opt_data message should not be written"
+    end
+
+    def opt_trace
+      logger.opt_trace "This opt_trace message should not be written"
+    end
+
+    def opt_debug
+      logger.opt_debug "This opt_debug message should not be written"
     end
 
     def info
@@ -68,6 +72,9 @@ e.obsolete
 e.data
 e.trace
 e.debug
+e.opt_data
+e.opt_trace
+e.opt_debug
 e.info
 e.pass
 e.fail

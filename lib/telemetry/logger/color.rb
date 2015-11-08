@@ -19,6 +19,10 @@ module Telemetry
         Rainbow(message).bright.white
       end
 
+      def opt_data(message)
+        data(message)
+      end
+
       def data(message)
         Rainbow(message).cyan
       end
