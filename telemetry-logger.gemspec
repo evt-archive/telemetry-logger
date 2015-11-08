@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'clock', '~> 0'
   s.add_runtime_dependency 'dependency', '~> 0'
 
-  s.add_runtime_dependency 'rainbow'
+  s.add_runtime_dependency 'rainbow', '~> 0'
 end
