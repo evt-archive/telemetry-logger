@@ -48,6 +48,10 @@ module Telemetry
       def write_message(message, level)
         message = message.to_s
 
+        if message.length == 0
+          message = '(no message given)'
+        end
+
         message.each_line do |line|
           line = line.chomp("\n") unless line.end_with?("\r\n") || line == "\n"
           line = line.gsub("\r", "\\r")
