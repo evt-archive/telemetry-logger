@@ -49,7 +49,7 @@ module Telemetry
         message = message.to_s
 
         if message.length == 0
-          message = '(no message given)'
+          message = '(empty log message)'
         end
 
         message.each_line do |line|
