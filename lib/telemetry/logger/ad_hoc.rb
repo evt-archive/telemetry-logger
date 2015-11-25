@@ -1,4 +1,4 @@
-module Telemetry
+class Telemetry
   module Logger
     module AdHoc
       def self.activate(target_class=nil)
