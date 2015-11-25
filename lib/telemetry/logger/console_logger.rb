@@ -1,4 +1,4 @@
-module Telemetry
+class Telemetry
   module Logger
     class ConsoleLogger
       include Levels

@@ -1,4 +1,4 @@
-module Telemetry
+class Telemetry
   module Logger
     module Color
       extend self
