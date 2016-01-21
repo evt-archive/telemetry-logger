@@ -9,17 +9,14 @@ class Telemetry
     end
 
     def get(subject, implementation=nil)
-      logger = Logger.build self
-      logger.obsolete "The \"get\" method is obsolete (#{caller[0]}). It is replaced with the \"build\" method."
-
-      build(subject, implementation=nil)
+      build(subject, implementation)
     end
 
     def register(subject, implementation=nil)
       logger = Logger.build self
       logger.obsolete "The \"register\" method is obsolete (#{caller[0]}). It is replaced with the \"build\" method."
 
-      build(subject, implementation=nil)
+      build(subject, implementation)
     end
 
     def configure(receiver, implementation=nil)
