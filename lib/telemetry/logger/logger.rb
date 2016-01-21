@@ -9,9 +9,6 @@ class Telemetry
     end
 
     def get(subject, implementation=nil)
-      logger = Logger.build self
-      logger.obsolete "The \"get\" method is obsolete (#{caller[0]}). It is replaced with the \"build\" method."
-
       build(subject, implementation=nil)
     end
 
