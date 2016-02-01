@@ -15,8 +15,12 @@ class Telemetry
         Rainbow(text).yellow
       end
 
+      def todo(message)
+        Rainbow(message).bright.white.bg(:white)
+      end
+
       def fubar(message)
-        Rainbow(message).green.bg(:red)
+        Rainbow(message).red.bg(:yellow)
       end
 
       def obsolete(message)
@@ -56,7 +60,7 @@ class Telemetry
       end
 
       def warn(message)
-        Rainbow(message).red.bg(:white)
+        Rainbow(message).yellow.bg(:black)
       end
 
       def error(message)

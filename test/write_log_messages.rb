@@ -10,6 +10,10 @@ module WriteLogMessages
       instance
     end
 
+    def todo
+      logger.todo "This is a todo"
+    end
+
     def fubar
       logger.fubar "This is a fubar"
     end
@@ -77,6 +81,7 @@ module WriteLogMessages
 end
 
 e = WriteLogMessages::Example.build
+e.todo
 e.fubar
 e.obsolete
 e.data

@@ -3,6 +3,7 @@ class Telemetry
     module Levels
       def self.levels
         [
+          :todo,
           :fubar,
           :obsolete,
           :data,
