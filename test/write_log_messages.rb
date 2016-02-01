@@ -10,6 +10,10 @@ module WriteLogMessages
       instance
     end
 
+    def fubar
+      logger.fubar "This is a fubar"
+    end
+
     def obsolete
       logger.obsolete "This is an obsolete"
     end
@@ -73,6 +77,7 @@ module WriteLogMessages
 end
 
 e = WriteLogMessages::Example.build
+e.fubar
 e.obsolete
 e.data
 e.multiline_data

@@ -9,6 +9,10 @@ module WriteToNullLogger
       instance
     end
 
+    def fubar
+      logger.fubar "This fubar message should not be written"
+    end
+
     def obsolete
       logger.obsolete "This obsolete message should not be written"
     end
@@ -68,6 +72,7 @@ module WriteToNullLogger
 end
 
 e = WriteToNullLogger::Example.build
+e.fubar
 e.obsolete
 e.data
 e.trace

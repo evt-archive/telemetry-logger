@@ -15,6 +15,10 @@ class Telemetry
         Rainbow(text).yellow
       end
 
+      def fubar(message)
+        Rainbow(message).green.bg(:red)
+      end
+
       def obsolete(message)
         Rainbow(message).bright.white
       end
