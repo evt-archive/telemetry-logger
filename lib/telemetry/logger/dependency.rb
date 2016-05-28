@@ -1,6 +1,6 @@
 class Telemetry
   module Logger
-    module Access
+    module Dependency
       def self.included(cls)
         cls.class_exec do
           dependency :logger, Telemetry::Logger

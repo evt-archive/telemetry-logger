@@ -1,11 +1,11 @@
 require_relative 'bench_init'
 
-context "Access Module" do
-  AccessModule = Class.new do
-    include Telemetry::Logger::Access
+context "Dependency Module" do
+  DependencyModule = Class.new do
+    include Telemetry::Logger::Dependency
   end
 
-  obj = AccessModule.new
+  obj = DependencyModule.new
 
   test "Adds the logger accessor" do
     assert(obj.respond_to? :logger)
