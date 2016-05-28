@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'dependency'
 
   s.add_runtime_dependency 'rainbow'
+
+  s.add_development_dependency 'test_bench'
 end
