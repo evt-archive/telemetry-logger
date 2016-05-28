@@ -4,10 +4,10 @@ ENV['LOG_COLOR'] ||= 'on'
 if ENV['LOG_LEVEL']
   ENV['LOGGER'] ||= 'on'
 else
-  ENV['LOG_LEVEL'] ||= 'trace'
+  ENV['LOG_LEVEL'] ||= 'todo'
 end
 
-ENV['LOGGER'] ||= 'off'
+ENV['LOGGER'] ||= 'on'
 ENV['LOG_OPTIONAL'] ||= 'on'
 
 puts RUBY_DESCRIPTION
