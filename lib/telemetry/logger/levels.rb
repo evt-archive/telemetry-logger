@@ -22,10 +22,6 @@ class Telemetry
         ]
       end
 
-      def levels
-        Levels.levels
-      end
-
       def self.included(cls)
         levels.each do |level|
           define_level level, cls
@@ -38,8 +34,26 @@ class Telemetry
         end
       end
 
+      def self.level_index
+        @level_index ||= build_level_index
+      end
+
+      def self.build_level_index
+        table = {}
+
+        levels.each_with_index do |level, index|
+          table[level] = index
+        end
+
+        table
+      end
+
+      def level_index
+        Levels.level_index
+      end
+
       def ordinal(level)
-        levels.index(level)
+        level_index[level]
       end
 
       def write_level(level, message)
