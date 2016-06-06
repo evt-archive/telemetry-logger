@@ -52,7 +52,7 @@ class Telemetry
       end
 
       def level=(level)
-        index = levels.index(level)
+        index = ordinal(level)
 
         raise "Unknown logger level: #{level}" unless index
 
