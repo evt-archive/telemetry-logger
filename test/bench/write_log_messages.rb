@@ -84,13 +84,13 @@ e = WriteLogMessages::Example.build
 e.todo
 e.fubar
 e.obsolete
+e.opt_data
+e.opt_trace
+e.opt_debug
 e.data
 e.multiline_data
 e.trace
 e.debug
-e.opt_data
-e.opt_trace
-e.opt_debug
 e.info
 e.pass
 e.fail
