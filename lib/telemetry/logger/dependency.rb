@@ -6,8 +6,7 @@ class Telemetry
           dependency :logger, Telemetry::Logger
 
           def logger
-            Logger.configure self
-            @logger
+            @logger ||= Logger.configure self
           end
         end
       end
