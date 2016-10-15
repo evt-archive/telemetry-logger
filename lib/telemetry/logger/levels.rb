@@ -53,6 +53,14 @@ class Telemetry
       end
 
       def ordinal(level)
+        if [:_min, :_max].include?(level)
+          if level == :_min
+            return level_index.values.last
+          else
+            return level_index.values.first
+          end
+        end
+
         level_index[level]
       end
 
