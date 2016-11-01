@@ -38,7 +38,7 @@ class Telemetry
 
       def write(message)
         return if Defaults.activation == 'off'
-        device.puts message
+        device.write "#{message}\n"
       end
 
       def format(message, level)
