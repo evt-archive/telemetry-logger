@@ -38,7 +38,7 @@ class Telemetry
 
       def write(message)
         return if Defaults.activation == 'off'
-        device.write "#{message}\n"
+        device.write "#{message}#{$INPUT_RECORD_SEPARATOR}"
       end
 
       def format(message, level)
