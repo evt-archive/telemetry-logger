@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'evt-telemetry-logger'
-  s.version = '0.5.1.2'
+  s.version = '0.5.1.3'
   s.summary = 'Logging to STDERR with coloring and levels of severity'
   s.description = ' '
 
@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'rainbow'
 
-  s.add_development_dependency 'ntl-test_bench'
+  s.add_development_dependency 'test_bench'
 end
