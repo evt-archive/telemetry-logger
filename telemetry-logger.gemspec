@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'evt-telemetry-logger'
-  s.version = '0.5.1.3'
+  s.version = '0.5.1.4'
   s.summary = 'Logging to STDERR with coloring and levels of severity'
   s.description = ' '
 
