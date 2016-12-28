@@ -12,19 +12,19 @@ class Telemetry
       end
 
       def metadata(text)
-        Rainbow(text).yellow
+        TerminalColors::Apply.(text, fg: 'yellow')
       end
 
       def todo(message)
-        Rainbow(message).bright.white.bg(:white)
+        TerminalColors::Apply.(message, fg: 'white', bg: 'white', bold: true)
       end
 
       def fubar(message)
-        Rainbow(message).red.bg(:yellow)
+        TerminalColors::Apply.(message, fg: 'red', bg: 'yellow')
       end
 
       def obsolete(message)
-        Rainbow(message).bright.white
+        TerminalColors::Apply.(message, fg: 'white', bold: true)
       end
 
       def opt_data(message)
@@ -32,7 +32,7 @@ class Telemetry
       end
 
       def data(message)
-        Rainbow(message).cyan
+        TerminalColors::Apply.(message, fg: 'cyan')
       end
 
       def opt_trace(message)
@@ -40,35 +40,35 @@ class Telemetry
       end
 
       def trace(message)
-        Rainbow(message).white
+        TerminalColors::Apply.(message, fg: 'white')
       end
 
       def info(message)
-        Rainbow(message).green
+        TerminalColors::Apply.(message, fg: 'green')
       end
 
       def pass(message)
-        Rainbow(message).black.bg(:green)
+        TerminalColors::Apply.(message, fg: 'black', bg: 'green')
       end
 
       def fail(message)
-        Rainbow(message).black.bg(:red)
+        TerminalColors::Apply.(message, fg: 'black', bg: 'red')
       end
 
       def focus(message)
-        Rainbow(message).bright.white.bg(:blue)
+        TerminalColors::Apply.(message, fg: 'white', bg: 'blue', bold: true)
       end
 
       def warn(message)
-        Rainbow(message).yellow.bg(:black)
+        TerminalColors::Apply.(message, fg: 'yellow', bg: 'black')
       end
 
       def error(message)
-        Rainbow(message).red.bg(:black)
+        TerminalColors::Apply.(message, fg: 'red', bg: 'black')
       end
 
       def fatal(message)
-        Rainbow(message).white.bg(:black)
+        TerminalColors::Apply.(message, fg: 'white', bg: 'black')
       end
     end
   end
